@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chat · aghanim-network playground</title>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="/">aghanim<span>-network</span></a>
+      <nav class="apps">
+        <a href="/">Scripts</a>
+        <a href="/chat/">Chat</a>
+        <a href="/discord/">Discord</a>
+        <a href="/tanks/">Tanks</a>
+      </nav>
+      <div class="end"><span id="net" class="net">starting…</span></div>
+    </header>
+    <div class="chat">
+      <aside class="rooms">
+        <h2>Rooms</h2>
+        <ul id="rooms"></ul>
+        <form id="join" class="join">
+          <input name="room" placeholder="room name" aria-label="Room name" autocomplete="off" required />
+          <button type="submit" class="ghost">Join</button>
+        </form>
+        <label class="me">
+          <span class="muted">Your name</span>
+          <input id="name" maxlength="32" autocomplete="nickname" />
+        </label>
+      </aside>
+      <main class="room">
+        <div class="room-head">
+          <h1 id="room-title"># general</h1>
+          <span id="room-scope" class="muted"></span>
+        </div>
+        <ol id="messages" aria-live="polite"></ol>
+        <p id="typing" class="typing muted"></p>
+        <form id="composer" class="composer">
+          <input name="text" placeholder="Message" aria-label="Message" autocomplete="off" maxlength="2000" required />
+          <button type="submit">Send</button>
+        </form>
+      </main>
+      <aside class="people">
+        <h2>Online <span id="online-count" class="muted"></span></h2>
+        <ul id="online"></ul>
+        <p class="muted small">
+          Messages sync peer to peer and are stored on this device, so history stays readable offline. Open this page
+          in another browser to chat with yourself.
+        </p>
+      </aside>
+    </div>
+    <script type="module" src="/src/chat/main.ts"></script>
+  </body>
+</html>

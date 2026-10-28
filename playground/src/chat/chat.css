@@ -1,0 +1,171 @@
+.chat {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr) 240px;
+}
+@media (max-width: 900px) {
+  .chat {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .rooms,
+  .people {
+    display: none;
+  }
+}
+.rooms,
+.people {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 16px;
+  overflow-y: auto;
+}
+.rooms {
+  border-right: 1px solid var(--line);
+}
+.people {
+  border-left: 1px solid var(--line);
+}
+.rooms h2,
+.people h2 {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+.rooms ul,
+.people ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.rooms a {
+  display: block;
+  padding: 5px 10px;
+  border-radius: 8px;
+  color: var(--muted);
+  text-decoration: none;
+}
+.rooms a:hover {
+  color: var(--fg);
+  background: var(--card);
+}
+.rooms a[aria-current] {
+  color: var(--fg);
+  background: var(--card);
+  box-shadow: 0 0 0 1px var(--line);
+}
+.join {
+  display: flex;
+  gap: 6px;
+}
+.join input {
+  flex: 1;
+}
+.me {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 13px;
+}
+.people li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 3px 0;
+}
+.dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  flex: none;
+}
+.small {
+  font-size: 12px;
+  margin: auto 0 0;
+}
+
+.room {
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+.room-head {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--line);
+}
+.room-head h1 {
+  font-size: 17px;
+}
+.room-head span {
+  font: 12px var(--mono);
+}
+#messages {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  list-style: none;
+  margin: 0;
+  padding: 12px 0;
+}
+.msg {
+  display: grid;
+  grid-template-columns: 36px minmax(0, 1fr);
+  gap: 12px;
+  padding: 6px 20px 2px;
+}
+.msg:hover {
+  background: color-mix(in srgb, var(--card) 70%, transparent);
+}
+.msg.grouped {
+  padding-top: 0;
+}
+.msg.grouped .text {
+  grid-column: 2;
+}
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  font-weight: 700;
+}
+.meta {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+.meta time {
+  font-size: 12px;
+}
+.text {
+  margin: 0;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+.typing {
+  margin: 0;
+  min-height: 20px;
+  padding: 0 20px;
+  font-size: 12px;
+}
+.composer {
+  display: flex;
+  gap: 8px;
+  padding: 4px 20px 18px;
+}
+.composer input {
+  flex: 1;
+  padding: 10px 14px;
+  background: var(--card);
+}

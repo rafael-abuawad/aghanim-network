@@ -19,6 +19,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         scripts: page("index.html"),
+        chat: page("chat/index.html"),
       },
     },
   },

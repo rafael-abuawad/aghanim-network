@@ -1,0 +1,16 @@
+[package]
+name = "aghanim-sync"
+description = "Sans-io sync node for aghanim-network: handshake, subscriptions, catch-up, live push, authorization"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[dependencies]
+aghanim-core.workspace = true
+aghanim-crypto.workspace = true
+aghanim-store.workspace = true
+hex.workspace = true
+
+[dev-dependencies]
+proptest.workspace = true

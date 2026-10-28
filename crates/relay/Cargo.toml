@@ -1,0 +1,33 @@
+[package]
+name = "aghanim-relay"
+description = "aghanim-network relay: WebRTC signaling, persistent sync peer and WebSocket fallback"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[[bin]]
+name = "aghanim-relay"
+path = "src/main.rs"
+
+[dependencies]
+aghanim-core.workspace = true
+aghanim-crypto.workspace = true
+aghanim-store.workspace = true
+aghanim-sync.workspace = true
+hex.workspace = true
+axum = { version = "0.8", features = ["ws"] }
+tokio = { version = "1", features = ["rt-multi-thread", "macros", "sync", "net", "time", "signal"] }
+redb = "2"
+clap = { version = "4", features = ["derive", "env"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+toml = "0.8"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+tower-http = { version = "0.6", features = ["cors"] }
+futures-util = "0.3"
+
+[dev-dependencies]
+tokio-tungstenite = "0.26"
+tempfile = "3"

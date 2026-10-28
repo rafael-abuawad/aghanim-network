@@ -1,0 +1,23 @@
+# aghanim-relay configuration. Every value is optional; CLI flags override it.
+#   aghanim-relay --config relay.toml
+
+listen = "0.0.0.0:8787"
+data_dir = "./data"
+
+# App ids this relay serves. Empty (the default) serves any app id.
+apps = []
+
+# Max sync frames per second per connection (bursts up to twice this).
+max_frames_per_sec = 200
+max_frame_bytes = 4194304
+
+# Handed to browsers at GET /v1/<app>/ice for WebRTC. Add a TURN server so
+# peers behind strict NATs can still connect directly; without one, they
+# fall back to syncing through this relay.
+[[ice_servers]]
+urls = ["stun:stun.l.google.com:19302"]
+
+# [[ice_servers]]
+# urls = ["turn:turn.example.com:3478"]
+# username = "user"
+# credential = "secret"

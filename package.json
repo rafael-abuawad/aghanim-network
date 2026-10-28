@@ -1,0 +1,24 @@
+{
+  "name": "aghanim-network",
+  "private": true,
+  "license": "GPL-3.0-or-later",
+  "type": "module",
+  "packageManager": "pnpm@12.15.0",
+  "scripts": {
+    "build:wasm": "node scripts/build-wasm.mjs",
+    "build": "pnpm build:wasm && pnpm -r build",
+    "test": "pnpm -r test",
+    "typecheck": "pnpm -r typecheck",
+    "lint": "biome check .",
+    "format": "biome format --write .",
+    "e2e": "playwright test -c tests/e2e/playwright.config.ts",
+    "relay": "cargo run -p aghanim-relay --release --",
+    "demo": "pnpm --filter @aghanim/demo dev"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.0.0",
+    "@playwright/test": "^1.50.0",
+    "@types/node": "^26.6.5",
+    "typescript": "^5.6.0"
+  }
+}

@@ -1,0 +1,10 @@
+/target
+node_modules
+dist
+/packages/sdk/wasm
+/data
+*.redb
+test-results
+playwright-report
+.vite
+tests/e2e/.relay-data

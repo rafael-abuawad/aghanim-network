@@ -1,0 +1,20 @@
+[package]
+name = "aghanim-wasm"
+description = "WebAssembly bindings for the aghanim-network engine"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+aghanim-core.workspace = true
+aghanim-crypto.workspace = true
+aghanim-store.workspace = true
+aghanim-sync.workspace = true
+hex.workspace = true
+wasm-bindgen = "=0.2.129"
+js-sys = "0.3"
+getrandom = { workspace = true, features = ["js"] }

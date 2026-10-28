@@ -1,0 +1,10 @@
+[package]
+name = "aghanim-store"
+description = "Key-value storage, indexes, change log and query execution for aghanim-network"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[dependencies]
+aghanim-core.workspace = true

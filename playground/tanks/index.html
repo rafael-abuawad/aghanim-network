@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tanks · aghanim-network playground</title>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="/">aghanim<span>-network</span></a>
+      <nav class="apps">
+        <a href="/">Scripts</a>
+        <a href="/chat/">Chat</a>
+        <a href="/discord/">Discord</a>
+        <a href="/tanks/">Tanks</a>
+      </nav>
+      <div class="end"><span id="net" class="net">starting…</span></div>
+    </header>
+    <div class="tanks">
+      <div class="stage"><canvas id="arena" aria-label="Arena"></canvas></div>
+      <aside class="hud">
+        <form id="room-form" class="field">
+          <label for="room" class="muted">Room</label>
+          <div class="row">
+            <input id="room" maxlength="24" autocomplete="off" />
+            <button type="submit" class="ghost">Go</button>
+          </div>
+        </form>
+        <div class="field">
+          <label for="name" class="muted">Your name</label>
+          <input id="name" maxlength="24" autocomplete="nickname" />
+        </div>
+
+        <h2>Scoreboard <span class="muted">· <span id="players">1</span> playing</span></h2>
+        <table>
+          <thead>
+            <tr><th>Player</th><th>K</th><th>D</th></tr>
+          </thead>
+          <tbody id="scores"></tbody>
+        </table>
+
+        <h2>Feed</h2>
+        <ul id="feed" class="feed"></ul>
+
+        <div class="help muted">
+          <p><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> or arrows to drive, mouse to aim, click or <kbd>Space</kbd> to fire.</p>
+          <p>
+            Each tank publishes its own state; shots are simulated locally from their launch, and the tank that gets hit
+            decides the damage. Open another tab or browser to play.
+          </p>
+        </div>
+      </aside>
+    </div>
+    <script type="module" src="/src/tanks/main.ts"></script>
+  </body>
+</html>

@@ -21,6 +21,7 @@ export default defineConfig({
         scripts: page("index.html"),
         chat: page("chat/index.html"),
         discord: page("discord/index.html"),
+        tanks: page("tanks/index.html"),
       },
     },
   },

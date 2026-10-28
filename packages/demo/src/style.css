@@ -1,0 +1,177 @@
+:root {
+  color-scheme: light dark;
+  --bg: #f6f6f4;
+  --card: #fff;
+  --fg: #1d1d1f;
+  --muted: #6b6b70;
+  --line: #e3e3e0;
+  --accent: #5b4bdb;
+  font:
+    15px / 1.45 system-ui,
+    -apple-system,
+    "Segoe UI",
+    sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #131316;
+    --card: #1c1c21;
+    --fg: #ececf0;
+    --muted: #9a9aa3;
+    --line: #2c2c33;
+    --accent: #8f83ff;
+  }
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+}
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--line);
+}
+h1 {
+  font-size: 20px;
+  margin: 0;
+}
+h1 span {
+  color: var(--muted);
+  font-weight: 400;
+}
+h2 {
+  font-size: 16px;
+  margin: 0 0 8px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+main {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 16px;
+  padding: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 16px;
+}
+.row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin: 8px 0;
+}
+.row > input {
+  flex: 1;
+  min-width: 0;
+}
+input,
+select,
+button {
+  font: inherit;
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background: var(--bg);
+  color: var(--fg);
+}
+button {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+  cursor: pointer;
+}
+button.ghost {
+  background: transparent;
+  color: var(--accent);
+}
+code {
+  font-size: 12px;
+  word-break: break-all;
+  flex: 1;
+}
+.muted {
+  color: var(--muted);
+}
+.small {
+  font-size: 12px;
+}
+.tag {
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--muted);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 1px 6px;
+  font-family: ui-monospace, monospace;
+}
+.net {
+  font-size: 12px;
+  color: var(--muted);
+  font-family: ui-monospace, monospace;
+}
+ol#messages {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-height: 280px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+ol#messages li {
+  padding: 4px 8px;
+  border-radius: 8px;
+  background: var(--bg);
+}
+ol#messages .who {
+  color: var(--muted);
+  font-size: 11px;
+  font-family: ui-monospace, monospace;
+  margin-right: 6px;
+}
+ul#todos,
+ul#members {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+ul#todos li {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding: 4px 0;
+}
+ul#todos li.done span {
+  text-decoration: line-through;
+  color: var(--muted);
+}
+ul#todos li span {
+  flex: 1;
+}
+ul#todos button {
+  padding: 0 8px;
+}
+ul#members li {
+  font-family: ui-monospace, monospace;
+  font-size: 12px;
+  padding: 2px 0;
+  display: flex;
+  gap: 8px;
+}
+ul#members li.inactive {
+  opacity: 0.5;
+  text-decoration: line-through;
+}

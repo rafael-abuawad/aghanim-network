@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>aghanim-network demo</title>
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>aghanim<span>-network</span></h1>
+      <div id="net" class="net">connecting…</div>
+    </header>
+    <main>
+      <section class="card" id="identity">
+        <h2>Identity</h2>
+        <p class="muted">Your user id is your public key. Share it to be invited to a space.</p>
+        <div class="row"><code id="me">…</code><button type="button" id="copy-me" class="ghost">Copy</button></div>
+        <form id="login" class="row">
+          <input name="alias" placeholder="alias" autocomplete="username" required />
+          <input name="pass" type="password" placeholder="passphrase" autocomplete="current-password" required />
+          <button type="submit">Log in</button>
+        </form>
+        <p class="muted small">The same alias and passphrase give the same identity on any device.</p>
+      </section>
+
+      <section class="card" id="chat">
+        <h2>Public chat <span class="tag">public/demo</span></h2>
+        <ol id="messages"></ol>
+        <form id="say" class="row">
+          <input name="text" placeholder="Say something" autocomplete="off" required />
+          <button type="submit">Send</button>
+        </form>
+      </section>
+
+      <section class="card" id="space">
+        <h2>Encrypted todos <span class="tag" id="space-tag">no space</span></h2>
+        <div id="no-space">
+          <p class="muted">Spaces are end-to-end encrypted. Relays only ever see ciphertext.</p>
+          <div class="row">
+            <button type="button" id="create-space">Create a space</button>
+            <input id="space-id" placeholder="…or paste a space id" />
+            <button type="button" id="open-space" class="ghost">Open</button>
+          </div>
+        </div>
+        <div id="in-space" hidden>
+          <form id="add-todo" class="row">
+            <input name="title" placeholder="New todo" autocomplete="off" required />
+            <button type="submit">Add</button>
+          </form>
+          <ul id="todos"></ul>
+          <details>
+            <summary>Members</summary>
+            <ul id="members"></ul>
+            <form id="invite" class="row">
+              <input name="pk" placeholder="member public key" required />
+              <select name="role"><option>writer</option><option>reader</option></select>
+              <button type="submit">Invite</button>
+            </form>
+            <p class="muted small">Share this page's URL with members: it contains the space id.</p>
+          </details>
+        </div>
+      </section>
+    </main>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

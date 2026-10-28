@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scripts · aghanim-network playground</title>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="/">aghanim<span>-network</span></a>
+      <nav class="apps">
+        <a href="/">Scripts</a>
+        <a href="/chat/">Chat</a>
+        <a href="/discord/">Discord</a>
+        <a href="/tanks/">Tanks</a>
+      </nav>
+      <div class="end peers">
+        <div class="peer" id="peer-alice"><strong>alice</strong><code>…</code></div>
+        <button type="button" id="link" class="link" disabled>linked</button>
+        <div class="peer" id="peer-bob"><strong>bob</strong><code>…</code></div>
+      </div>
+    </header>
+    <div class="layout">
+      <nav id="examples" aria-label="Examples"></nav>
+      <section class="pane">
+        <div class="bar">
+          <div>
+            <h2 id="title">Example</h2>
+            <p id="summary" class="muted"></p>
+          </div>
+          <div class="actions">
+            <button type="button" id="revert" class="ghost" hidden>Revert</button>
+            <button type="button" id="run">Run <kbd>Ctrl ↵</kbd></button>
+          </div>
+        </div>
+        <div id="editor"></div>
+        <p class="hint muted">
+          In scope: every <code>@aghanim/sdk</code> export, the peers <code>alice</code> and <code>bob</code>,
+          <code>link.cut()</code> / <code>link.restore()</code>, <code>log</code>, <code>sleep(ms)</code> and
+          <code>until(fn)</code>. Each run starts two fresh peers.
+        </p>
+      </section>
+      <section class="pane">
+        <div class="bar">
+          <h2>Output</h2>
+          <button type="button" id="clear" class="ghost">Clear</button>
+        </div>
+        <ol id="output" aria-live="polite"></ol>
+      </section>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

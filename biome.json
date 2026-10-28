@@ -3,6 +3,7 @@
   "files": {
     "includes": [
       "packages/**",
+      "playground/**",
       "tests/**",
       "scripts/**",
       "!**/wasm",

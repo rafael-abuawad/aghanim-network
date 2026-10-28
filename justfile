@@ -32,3 +32,7 @@ relay *args:
 # Run the demo against a local relay (start `just relay` first).
 demo:
     pnpm --filter @aghanim/demo dev
+
+# Run the SDK playground (two in-page peers, no relay needed).
+playground:
+    pnpm --filter @aghanim/playground dev

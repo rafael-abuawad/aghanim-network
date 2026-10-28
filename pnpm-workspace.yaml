@@ -1,5 +1,6 @@
 packages:
   - packages/*
+  - playground
 allowBuilds:
   cbor-extract: false
   esbuild: true

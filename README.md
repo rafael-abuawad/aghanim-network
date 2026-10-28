@@ -52,6 +52,37 @@ chat syncs right away. Create a space in one, paste the other's user id into
 **Members → Invite**, then open the page's URL (it carries the space id) in the
 other browser.
 
+### Playground
+
+```sh
+pnpm --filter @aghanim/playground dev    # http://localhost:5174
+```
+
+The playground has four pages:
+
+- **Scripts** (`/`) runs SDK snippets with no relay needed. Two peers, `alice`
+  and `bob`, run in the page with their own engines and in-memory stores,
+  joined by a link you can cut and restore. Pick an example (live sync,
+  queries, offline edits, write permissions, encrypted spaces, identity), edit
+  it, and run it with Ctrl+Enter.
+- **Chat** (`/chat/`): public rooms with display names, an online list and
+  typing indicators. History is stored on the device and readable offline.
+- **Discord** (`/discord/`): a public lobby plus servers you create, each an
+  end-to-end encrypted space with channels. Share an invite link; opening it
+  files a join request that the owner approves. Removing a member rotates the
+  key.
+- **Tanks** (`/tanks/`): a real-time multiplayer arena. Each tank publishes
+  its own state about 12 times a second, shots are simulated locally from their
+  launch, and the tank that gets hit decides the damage, so no peer writes
+  anyone else's state.
+
+The three apps need a relay (`just relay`, or `?relay=wss://…` in the URL) to
+find peers in other browsers; tabs of one browser also sync with each other
+directly. Chat and Discord keep one identity per browser, so use two browsers
+(or a private window) to talk to yourself. Tanks gives every tab its own tank.
+Tanks rooms keep every position update in the relay's change log, so use fresh
+room names (`#room=…`) for long sessions.
+
 ## Layout
 
 ```
@@ -70,6 +101,8 @@ packages/
   sdk/      @aghanim/sdk: Firestore-style API, Web Worker host, IndexedDB,
             WebRTC / WebSocket / BroadcastChannel transports
   demo/     @aghanim/demo: public chat and an encrypted todo list (Vite)
+playground/ @aghanim/playground: runnable SDK scripts, plus chat, Discord-style
+            and tank game demo apps
 tests/e2e/  Playwright tests with real browsers, a real relay and the demo
 ```
 

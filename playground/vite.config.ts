@@ -20,6 +20,7 @@ export default defineConfig({
       input: {
         scripts: page("index.html"),
         chat: page("chat/index.html"),
+        discord: page("discord/index.html"),
       },
     },
   },

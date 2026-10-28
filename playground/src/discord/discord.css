@@ -1,0 +1,359 @@
+.discord {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 72px 240px minmax(0, 1fr) 240px;
+}
+@media (max-width: 1000px) {
+  .discord {
+    grid-template-columns: 72px 220px minmax(0, 1fr);
+  }
+  .members {
+    display: none;
+  }
+}
+button.small {
+  padding: 3px 9px;
+  font-size: 12px;
+}
+.avatar {
+  width: 36px;
+  height: 36px;
+  flex: none;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  font-weight: 700;
+}
+.avatar.small {
+  width: 26px;
+  height: 26px;
+  font-size: 12px;
+}
+
+/* --- server rail --------------------------------------------------------- */
+.rail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 0;
+  background: var(--raised);
+  overflow-y: auto;
+}
+.rail hr {
+  width: 32px;
+  border: 0;
+  border-top: 2px solid var(--line);
+  margin: 2px 0;
+}
+.server {
+  position: relative;
+  width: 46px;
+  height: 46px;
+  flex: none;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  padding: 0;
+  background: var(--card);
+  color: #fff;
+  font-weight: 700;
+  font-size: 14px;
+  text-decoration: none;
+  transition: border-radius 0.15s ease;
+}
+.server[href*="s=lobby"] {
+  color: var(--fg);
+  font-size: 20px;
+}
+.server:hover,
+.server[aria-current] {
+  border-radius: 14px;
+}
+.server[aria-current]::before {
+  content: "";
+  position: absolute;
+  left: -13px;
+  width: 4px;
+  height: 32px;
+  border-radius: 0 4px 4px 0;
+  background: var(--fg);
+}
+.server.add {
+  color: var(--ok);
+  font-size: 24px;
+  font-weight: 400;
+  border: 1px dashed var(--line);
+}
+.badge {
+  position: absolute;
+  right: -4px;
+  bottom: -4px;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  border-radius: 9px;
+  border: 3px solid var(--raised);
+  box-sizing: content-box;
+  background: var(--err);
+  font-size: 11px;
+  line-height: 18px;
+  text-align: center;
+}
+
+/* --- channel sidebar ------------------------------------------------------- */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  background: var(--card);
+  border-right: 1px solid var(--line);
+}
+.server-head {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 14px 14px 2px;
+}
+.server-head h2 {
+  flex: 1;
+  font-size: 15px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.kind {
+  margin: 0;
+  padding: 0 14px 10px;
+  font-size: 12px;
+  border-bottom: 1px solid var(--line);
+}
+.channels {
+  list-style: none;
+  margin: 0;
+  padding: 10px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  overflow-y: auto;
+}
+.channels a {
+  display: block;
+  padding: 5px 10px;
+  border-radius: 6px;
+  color: var(--muted);
+  text-decoration: none;
+}
+.channels a:hover {
+  background: var(--raised);
+  color: var(--fg);
+}
+.channels a[aria-current] {
+  background: var(--raised);
+  color: var(--fg);
+  font-weight: 600;
+}
+.add-channel {
+  display: flex;
+  gap: 6px;
+  padding: 0 12px 12px;
+}
+.add-channel input {
+  flex: 1;
+  font-size: 13px;
+  padding: 4px 8px;
+}
+.user {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  background: var(--raised);
+}
+.who {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.who input {
+  border-color: transparent;
+  background: transparent;
+  padding: 0 4px;
+  font-weight: 600;
+}
+.who input:hover,
+.who input:focus {
+  border-color: var(--line);
+}
+.id {
+  background: none;
+  color: var(--muted);
+  padding: 0 4px;
+  font: 11px var(--mono);
+  text-align: left;
+}
+
+/* --- channel ------------------------------------------------------------- */
+.channel {
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+.channel-head {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--line);
+}
+.channel-head h1 {
+  font-size: 16px;
+}
+.channel-head span {
+  font-size: 12px;
+}
+.messages {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  list-style: none;
+  margin: 0;
+  padding: 12px 0;
+}
+.msg {
+  display: grid;
+  grid-template-columns: 36px minmax(0, 1fr);
+  gap: 14px;
+  padding: 6px 20px 2px;
+}
+.msg:hover {
+  background: color-mix(in srgb, var(--card) 70%, transparent);
+}
+.msg.grouped {
+  padding-top: 0;
+}
+.msg.grouped .text {
+  grid-column: 2;
+}
+.meta {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+.meta time {
+  font-size: 12px;
+}
+.text {
+  margin: 0;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+.gate {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 40px;
+  text-align: center;
+}
+.gate p {
+  max-width: 380px;
+  margin: 0;
+}
+.error {
+  margin: 0 20px 8px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  color: var(--err);
+  background: color-mix(in srgb, var(--err) 12%, transparent);
+  font-size: 13px;
+}
+.composer {
+  padding: 4px 20px 18px;
+}
+.composer input {
+  width: 100%;
+  padding: 11px 14px;
+  background: var(--card);
+}
+
+/* --- members -------------------------------------------------------------- */
+.members {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px 12px;
+  background: var(--card);
+  border-left: 1px solid var(--line);
+  overflow-y: auto;
+}
+.members h2 {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+.members ul {
+  list-style: none;
+  margin: 0 0 12px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.members li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.member-name {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.role {
+  font-size: 11px;
+  color: var(--muted);
+}
+#requests-box {
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--line);
+}
+
+/* --- dialogs --------------------------------------------------------------- */
+dialog {
+  width: min(440px, calc(100vw - 32px));
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 22px;
+  background: var(--card);
+  color: var(--fg);
+}
+dialog::backdrop {
+  background: rgb(0 0 0 / 0.45);
+}
+dialog form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+dialog h2 {
+  font-size: 18px;
+}
+dialog p {
+  margin: 0;
+  font-size: 14px;
+}
+.dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}

@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Discord · aghanim-network playground</title>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="/">aghanim<span>-network</span></a>
+      <nav class="apps">
+        <a href="/">Scripts</a>
+        <a href="/chat/">Chat</a>
+        <a href="/discord/">Discord</a>
+        <a href="/tanks/">Tanks</a>
+      </nav>
+      <div class="end"><span id="net" class="net">starting…</span></div>
+    </header>
+    <div class="discord">
+      <nav id="rail" class="rail" aria-label="Servers"></nav>
+
+      <aside class="sidebar">
+        <div class="server-head">
+          <h2 id="server-name">Lobby</h2>
+          <button type="button" id="invite" class="ghost small" hidden>Invite</button>
+          <button type="button" id="leave" class="ghost small" hidden>Leave</button>
+        </div>
+        <p id="server-kind" class="kind muted"></p>
+        <ul id="channels" class="channels"></ul>
+        <form id="add-channel" class="add-channel">
+          <input name="name" placeholder="new-channel" aria-label="New channel name" maxlength="24" required />
+          <button type="submit" class="ghost small">Add</button>
+        </form>
+        <div class="user">
+          <span id="me-avatar" class="avatar"></span>
+          <div class="who">
+            <input id="me-name" aria-label="Your display name" maxlength="32" />
+            <button type="button" id="me-id" class="id" title="Copy your user id"></button>
+          </div>
+        </div>
+      </aside>
+
+      <main class="channel">
+        <div class="channel-head">
+          <h1 id="channel-name"># general</h1>
+          <span id="channel-note" class="muted"></span>
+        </div>
+        <div id="gate" class="gate" hidden></div>
+        <ol id="messages" class="messages" aria-live="polite"></ol>
+        <p id="error" class="error" role="alert" hidden></p>
+        <form id="composer" class="composer">
+          <input name="text" aria-label="Message" autocomplete="off" maxlength="2000" required />
+        </form>
+      </main>
+
+      <aside class="members">
+        <section id="requests-box" hidden>
+          <h2>Join requests</h2>
+          <ul id="requests"></ul>
+        </section>
+        <h2 id="members-title">Members</h2>
+        <ul id="members"></ul>
+      </aside>
+    </div>
+
+    <dialog id="create-dialog">
+      <form method="dialog" id="create-form">
+        <h2>Create a server</h2>
+        <p class="muted">
+          A server is an end-to-end encrypted space. Only members you approve can read it; relays only see ciphertext.
+        </p>
+        <input name="name" placeholder="Server name" aria-label="Server name" maxlength="32" required />
+        <div class="dialog-actions">
+          <button type="button" class="ghost" data-close>Cancel</button>
+          <button type="submit">Create</button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog id="invite-dialog">
+      <form method="dialog">
+        <h2>Invite people</h2>
+        <p class="muted">
+          Send this link. Opening it asks to join, and you approve each request from the members panel.
+        </p>
+        <input id="invite-link" readonly aria-label="Invite link" />
+        <div class="dialog-actions">
+          <button type="button" class="ghost" data-close>Close</button>
+          <button type="button" id="copy-invite">Copy link</button>
+        </div>
+      </form>
+    </dialog>
+
+    <script type="module" src="/src/discord/main.ts"></script>
+  </body>
+</html>
